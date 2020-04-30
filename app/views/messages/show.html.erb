@@ -1,14 +1,26 @@
 <h1 align="center"><%= current_user.username %>'s Messages</h1>
-<div class="ui container">
-	<% @user_messages.each do |message| %>
-		<% if message.present? %>
-			<div class="content">
-				<div class="summary">
-					<strong><%= message.created_at.strftime("%m-%d-%Y") %></strong>...<em><%= message.user.username %></em>: <%= message.body %>
+<div class="ui text container">
+	<% if current_user.messages.count > 0 %>
+		<% @user_messages.each do |message| %>
+			<div class="ui inverted segment">
+				<div class="ui inverted relaxed divided list">
+					<div class="item">
+						<div class="content">
+							<div class="header">
+								<strong><%= message.created_at.strftime("%c") %></strong>
+							</div>
+							<em><%= message.user.username %></em>: <%= message.body %>
+						</div>
+					</div>
 				</div>
 			</div>
-		<% else %>
-			<% redirect_to root_path %>
 		<% end %>
+	<% else %>
+		<div class="ui text container">
+			<p align="center">You have not created any messages.</p>
+		</div>
 	<% end %>
+	<div class="row" align="center">
+		<%= link_to "[ Return to Chatroom ]", root_path, class: "center" %>
+	</div>
 </div>
