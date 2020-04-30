@@ -9,6 +9,10 @@ class MessagesController < ApplicationController
 		end
 	end
 
+	def show
+		@user_messages = current_user.messages
+	end
+
 	private
 
 	def message_params

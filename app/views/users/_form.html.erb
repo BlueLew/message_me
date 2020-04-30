@@ -1,18 +1,18 @@
-<div class="ui large form">
-	<div class="two fields">
-	<%= form_for(@user) do |f| %>
-		<div class="field">
-			<%= f.label :username %>
-			<%= f.text_field :username, placeholder: "Enter username", autofocus: true %>
+<div class="ui text container">
+	<div class="ui large form">
+		<%= form_for(@user) do |f| %>
+			<div class="field">
+				<%= f.label :username %>
+				<%= f.text_field :username, placeholder: "Enter username", autofocus: true %>
+			</div>
+			<div class="field">
+				<%= f.label :password %>
+				<%= f.password_field :password, class: "form-control", placeholder: "Enter password" %>
+			</div>
+			<%= f.button(@user.new_record? ? "Sign Up" : "Update Account", class: "ui green submit button large") %>
+		<% end %>
+		<div class="row">
+			<%= link_to "[ Cancel Request ]", root_path %>
 		</div>
-		<div class="field">
-			<%= f.label :password %>
-			<%= f.password_field :password, class: "form-control", placeholder: "Enter password" %>
-		</div>
-	</div>
-	<%= f.button(@user.new_record? ? "Sign up" : "Update account", class: "ui primary submit button large") %>
-	<% end %>
-	<div class="ui button large">
-		<%= link_to "Cancel Request", root_path %>
 	</div>
 </div>

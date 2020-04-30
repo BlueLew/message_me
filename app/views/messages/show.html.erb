@@ -1,0 +1,14 @@
+<h1 align="center"><%= current_user.username %>'s Messages</h1>
+<div class="ui container">
+	<% @user_messages.each do |message| %>
+		<% if message.present? %>
+			<div class="content">
+				<div class="summary">
+					<strong><%= message.created_at.strftime("%m-%d-%Y") %></strong>...<em><%= message.user.username %></em>: <%= message.body %>
+				</div>
+			</div>
+		<% else %>
+			<% redirect_to root_path %>
+		<% end %>
+	<% end %>
+</div>
